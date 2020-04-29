@@ -15,7 +15,7 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
-import navs from "./navs";
+import navs from "../navs";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +59,13 @@ const Header = () => {
                                 </Link>
                             </NavLink>
                         </NavItem>
-
-
-
-
+                        <NavItem>
+                            <NavLink>
+                                <Link to="/tur/golden-retriever">
+                                    Favoriler
+                                </Link>
+                            </NavLink>
+                        </NavItem>
 
                     </Nav>
                 </Collapse>

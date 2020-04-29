@@ -4,6 +4,7 @@ import {Button} from "reactstrap";
 import FavoriteActions from "../components/FavoriteActions";
 import Dog from "../components/Dog";
 import axios from "axios";
+import { findByLabelText } from '@testing-library/react';
 
 
 const apiHost = "https://5ea8594f35f3720016608ef2.mockapi.io";
@@ -77,8 +78,8 @@ class Homepage extends React.Component {
             </div>
         }
         return (
-            <div>
-                <ul>
+            <div >
+                <ul style = {ulStyle}>
                     {
                         dogs.map((dog) => {
                             return <Dog toggle={this.toggle} id={dog.id} getStatus={this.getStatus} {...dog}/>
@@ -88,6 +89,14 @@ class Homepage extends React.Component {
             </div>
         );
     }
+}
+
+const ulStyle = {
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    flexDirection: 'row', 
+    alignItems: 'flex-start', 
+    margin : '50px 20px 0 20px'
 }
 
 export default Homepage;

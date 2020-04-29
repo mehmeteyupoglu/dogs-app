@@ -12,9 +12,8 @@ import { useParams } from 'react-router';
 // })
 
 
-const Details = () => {
-    let { id } = useParams(); 
-    console.log(id); 
+const Details = ({match}) => {
+    let { id } = match.params
 
     const myDog = dogs.find(dog=> dog.id === id)
     const {name, description, age, breed, image} = myDog
