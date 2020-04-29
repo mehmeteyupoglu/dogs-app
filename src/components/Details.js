@@ -4,21 +4,38 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import { useParams } from 'react-router';
 
 
-const Details = (props) => {
+// const findDog = dogs.find(dog => {
+//   id === id 
+// })
+
+
+const Details = () => {
+    let { id } = useParams(); 
+    console.log(id); 
+
+    const myDog = dogs.find(dog=> dog.id === id)
+    const {name, description, age, breed, image} = myDog
+    const imgStyle = {
+      maxHeight: 500,
+      maxWidth: 500
+    }
+    
     return (
         <div>
-      <Card>
-        <CardImg top width="100%" src=
-        {dogs.image} alt="Card image cap" />
+
+      <Card className='cardClass'>
+        <CardImg className="img-thumbnail" src={image} style={imgStyle} alt="Card image cap" />
         <CardBody>
-          <CardTitle>{dogs.name}</CardTitle>
-          <CardSubtitle>{dogs.description}</CardSubtitle>
-          <CardText>Dog Breed: {dogs.breed}</CardText>
-          <Button>Turn Back</Button>
+          <CardTitle><h1>Adı: {name}</h1></CardTitle>
+          <CardSubtitle><h4>Cinsi: {breed}</h4></CardSubtitle>
+          <CardSubtitle><h4>Yaşı: {age === 'Adult' ? 'Yaşlı' : 'Genç'}</h4></CardSubtitle>
         </CardBody>
+        
       </Card>
+        
     </div>
 
     )
