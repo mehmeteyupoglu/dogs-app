@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Details from './Details'; 
 import { Card } from 'reactstrap';
 
-const Dog = ({id, name, toggle, getStatus, breed }) => {
+const Dog = ({id, name, toggle, getStatus, breed, image }) => {
 
 
     function urlSlug(title) {
@@ -22,21 +22,19 @@ const Dog = ({id, name, toggle, getStatus, breed }) => {
         <Card style={Cardstyle}>
             <Link to={`/details/${id}/${urlSlug(breed)}` }  style={itemStyle} key={id} >{name} </Link> 
             <FavoriteActions toggle={toggle} id={id} getStatus={getStatus} />
-        </Card>
-                    
+        </Card>                   
     )     
-
 };
 
 const Cardstyle = {
-    width : '170px', 
-    height : '150px', 
+    width : '250px', 
+    height : '250px', 
     margin: '20px',
     display: 'flex', 
     justifyContent: 'center', 
     textAlign: 'center', 
     boxShadow: '5px 5px 6px 6px #c9c9c7', 
-    // flexWrap: 'wrap'
+    
   
 }
 
@@ -44,6 +42,7 @@ const itemStyle = {
     paddingBottom: '10px', 
     fontSize : '20px', 
     fontWeight : 'bold', 
+    
 }
 
 

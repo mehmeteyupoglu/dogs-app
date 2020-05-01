@@ -15,7 +15,8 @@ class Homepage extends React.Component {
 
         this.state = {
             favorites: [],
-            loadingFavorites: false
+            loadingFavorites: false, 
+            disabled: ''
         }
     }
     componentDidMount() {
@@ -24,6 +25,8 @@ class Homepage extends React.Component {
             favorites: window.localStorage.getItem("favorites") ? JSON.parse(window.localStorage.getItem("favorites")): []
         })*/
 
+
+        
         this.setState({
             loadingFavorites: true
         }, () => {
@@ -42,27 +45,32 @@ class Homepage extends React.Component {
     }
 
     toggle = (dogId)=>{
+        this.setState({disabled: dogId})
         const foundDog = this.state.favorites.find((favorite) => favorite.dogId === dogId);
         if(foundDog){
             axios.delete(`${apiHost}/favorites/${foundDog.id}`).then((result) => {
                 this.setState(({
-                    favorites: this.state.favorites.filter((dog) => dog.dogId !== dogId)
+                    favorites: this.state.favorites.filter((dog) => dog.dogId !== dogId), 
+                    disabled: false
                 }))
             }).catch((err) => {
                 console.log(err);
             });
         }else{
             // window.localStorage.setItem("favorites", JSON.stringify(this.state.favorites));
+
+            
             axios.post(`${apiHost}/favorites`, {
                 dogId
             }).then((result) => {
                 const eklenenFavori = result.data; // {id: 1, dogId: benim yolladigim dog id, createdat: date}
                 this.setState({
-                    favorites: [...this.state.favorites, eklenenFavori]
+                    favorites: [...this.state.favorites, eklenenFavori],
+                    disabled: false
                 })
             }).catch((err) => {
                 console.log(err);
-            })
+            }); 
         }
     }
 
