@@ -1,11 +1,7 @@
 import React from 'react';
 import dogs from "../dogsdata";
-import {Button} from "reactstrap";
-import FavoriteActions from "../components/FavoriteActions";
 import Dog from "../components/Dog";
 import axios from "axios";
-import { findByLabelText } from '@testing-library/react';
-
 
 const apiHost = "https://5ea8594f35f3720016608ef2.mockapi.io";
 
@@ -28,7 +24,8 @@ class Homepage extends React.Component {
 
         
         this.setState({
-            loadingFavorites: true
+            loadingFavorites: true,
+            disabled: true
         }, () => {
             axios.get(`${apiHost}/favorites`).then((result) => {
                 this.setState({
@@ -74,7 +71,7 @@ class Homepage extends React.Component {
         }
     }
 
-    getStatus= (dogId) =>{
+    getStatus = (dogId) =>{
         const foundDog = this.state.favorites.find((favorite) => favorite.dogId === dogId);
         return foundDog;
     }

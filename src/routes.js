@@ -1,7 +1,5 @@
 import React from "react";
 import Homepage from "./containers/Homepage";
-import Goldens from "./containers/Goldens";
-import Cavaliers from "./containers/Cavaliers";
 import FilteredDogs from "./containers/FilteredDogs";
 import Details from "./components/Details";
 

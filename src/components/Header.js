@@ -5,15 +5,9 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
 } from 'reactstrap';
 import navs from "../navs";
 
@@ -27,46 +21,17 @@ const Header = () => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-{/*                        {
-                            navs.map((route) => {
-                                return <NavItem key={route.path}>
-                                    <NavLink>
-                                        <Link to={route.path}>
-                                            {route.title}
-                                        </Link>
-                                    </NavLink>
-                                </NavItem>
-                            })
-                        }*/}
-                        <NavItem>
-                            <NavLink>
-                                <Link to="/">
-                                    Anasayfa
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink>
-                                <Link to="/hakkinda">
-                                    Hakkimizda
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink>
-                                <Link to="/tur/golden-retriever">
-                                    Goldens
-                                </Link>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink>
-                                <Link to="/tur/golden-retriever">
-                                    Favoriler
-                                </Link>
-                            </NavLink>
-                        </NavItem>
 
+                    {navs.map(nav => {
+                                return (
+                                    <NavItem>
+                                        <NavLink>
+                                        <Link to={nav.path}  component={nav.component}>{nav.title}</Link>
+                                        </NavLink>
+                                    </NavItem>
+                                ) 
+                    })}
+                        
                     </Nav>
                 </Collapse>
             </Navbar>

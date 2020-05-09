@@ -1,10 +1,9 @@
 import React from 'react';
 import FavoriteActions from "./FavoriteActions";
 import {Link} from "react-router-dom"; 
-import Details from './Details'; 
 import { Card } from 'reactstrap';
 
-const Dog = ({id, name, toggle, getStatus, breed, image }) => {
+const Dog = ({id, name, toggle, getStatus, breed }) => {
 
 
     function urlSlug(title) {
@@ -33,7 +32,7 @@ const Cardstyle = {
     display: 'flex', 
     justifyContent: 'center', 
     textAlign: 'center', 
-    boxShadow: '5px 5px 6px 6px #c9c9c7', 
+    boxShadow: '10px 10px 15px 3px #dbdbd9', 
     
   
 }
