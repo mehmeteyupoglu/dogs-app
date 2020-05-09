@@ -18,8 +18,8 @@ const navs = [
         title: "Chihuahua"
     },
     {
-        path: "/hakkinda",
-        title: "Hakkinda"
+        path: "/form",
+        title: "Form"
     },
 ];
 

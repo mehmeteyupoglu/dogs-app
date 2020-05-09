@@ -5,7 +5,6 @@ import {
   CardHeader, CardSubtitle, Button, Popover, 
   PopoverHeader, PopoverBody
 } from 'reactstrap';
-import { findByLabelText } from '@testing-library/react';
 
 const Details = ({match}) => {
     let { id } = match.params
