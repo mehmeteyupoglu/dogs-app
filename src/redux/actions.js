@@ -13,12 +13,12 @@ export const deleteFavorite = () => {
     }
 }
 
-export const fetchData = () => {
-    return (dispatch) => {
-        axios.get(`${apiHost}/favorites`).then((result) => {
-            dispatch({
-                type: result.data,
-                payload: result.data
-            })
-    }
-}
+// export const fetchData = () => {
+//     return (dispatch) => {
+//         axios.get(`${apiHost}/favorites`).then((result) => {
+//             dispatch({
+//                 type: result.data,
+//                 payload: result.data
+//             })
+//     }
+// }

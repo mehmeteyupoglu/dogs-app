@@ -5,22 +5,59 @@ import * as Yup from "yup";
 
 const form = (props) => {
   return (
+      <Formik
+        initialValues={{
+            firstName : "", 
+            lastName : "", 
+            company : "", 
+            phoneNumber: "", 
+            emailAdress: "",
+            url: "", 
+
+        }}
+        onSubmit={(values) => {
+            console.log(values)
+        }}
+      >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
         <Container>
         <h1>Contact Us</h1>
             <Form>
+
             <Row>
                 <Col xs="6">
                     
                     <FormGroup>
-                        <Label for="exampleEmail">First Name</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="" />
+                        <Label for="exampleFirstName">First Name</Label>
+                        <Input 
+                        type="text" 
+                        name="firstName" 
+                        id="name" 
+                        placeholder=""
+                        value={values.firstName}
+                        onchange={handleChange} />
                     </FormGroup>
 
                 </Col>
                 <Col xs="6">
                     <FormGroup>
-                        <Label for="examplePassword">Last Name</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="" />
+                        <Label for="exampleLastName">Last Name</Label>
+                        <Input 
+                        type="text" 
+                        name="lastName" 
+                        id="name" 
+                        placeholder=""
+                        value={values.lastName}
+                        onchange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
@@ -28,48 +65,78 @@ const form = (props) => {
             <Row>
                 <Col xs="6">
                     <FormGroup>
-                        <Label for="exampleEmail">Company</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="" />
+                        <Label for="company">Company</Label>
+                        <Input 
+                        type="text" 
+                        name="company" 
+                        id="company" 
+                        placeholder=""
+                        value={values.company}
+                        onchange={handleChange} />
                     </FormGroup>                  
 
                 </Col>
 
                 <Col xs="6">
                     <FormGroup>
-                        <Label for="examplePassword">Phone Number</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="phone" />
+                        <Label for="phoneNumber">Phone Number</Label>
+                        <Input 
+                        type="phone" 
+                        name="phoneNumber" 
+                        id="phoneNumber" 
+                        placeholder="phone"
+                        value={values.phoneNumber}
+                        onchange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
+
             <Row>
                 <Col xs="6">
                     <FormGroup>
                         <Label for="exampleEmail">Email Adress</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="url" />
+                        <Input 
+                        type="email" 
+                        name="emailAdress" 
+                        id="exampleEmail" 
+                        placeholder="email"
+                        value={values.emailAdress}
+                        onchange={handleChange} />
                     </FormGroup>                 
 
                 </Col>
 
                 <Col xs="6">
                     <FormGroup>
-                        <Label for="examplePassword">Url</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="email" />
+                        <Label for="url">Url</Label>
+                        <Input 
+                        type="url" 
+                        name="url" 
+                        id="url" 
+                        placeholder="url"
+                        value={values.url}
+                        onchange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
+
             <Row>
                 <Col xs="6">
                 <FormGroup tag="fieldset">
                 <legend>When is the best time of day to reach you?</legend>
                 <FormGroup check>
                     <Label check>
-                        <Input type="radio" name="radio1" />{' '}
+                        <Input 
+                        type="radio" 
+                        name="morning" />{' '}
                         Morning
                     </Label>
                 </FormGroup>
                 <FormGroup check>
                 <Label check>
-                    <Input type="radio" name="radio1" />{' '}
+                    <Input 
+                    type="radio" 
+                    name="evening" />{' '}
                     Evening
                 </Label>
                 </FormGroup>
@@ -77,9 +144,9 @@ const form = (props) => {
                  </FormGroup>         
 
                 </Col>
-
             
             </Row>
+
             <Row>
                 <FormGroup check>
                     <Label check>
@@ -88,11 +155,15 @@ const form = (props) => {
                     </Label>
                 </FormGroup>
             </Row>
+
             <Row>
                 <Button color="primary">Submit</Button>
             </Row>
+
             </Form>
-        </Container>
+        </Container> 
+      )} 
+    </Formik>
   );
 }
 
