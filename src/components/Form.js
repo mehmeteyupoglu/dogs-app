@@ -3,6 +3,18 @@ import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback, Containe
 import { Formik } from "formik";
 import * as Yup from "yup";
 
+const formValidation = Yup.object().shape({
+    firstName: Yup.string()
+     .required( 'Please enter your first name' ),
+    lastName: Yup.string()
+    .required( 'Please enter your last name' ),
+    email: Yup.string()
+     .email('Please enter a valid email')
+     .required('Please enter an email'),
+    phoneNumber: Yup.number()
+    .positive()
+   });
+
 const form = (props) => {
   return (
       <Formik
@@ -13,25 +25,25 @@ const form = (props) => {
             phoneNumber: "", 
             emailAdress: "",
             url: "", 
+            completed: "", 
+            checked: false, 
 
         }}
-        onSubmit={(values) => {
-            console.log(values)
+        onSubmit={(values, {resetForm}) => {
+            resetForm({})
         }}
+        validationSchema={formValidation}
       >
       {({
         values,
-        errors,
-        touched,
         handleChange,
-        handleBlur,
         handleSubmit,
-        isSubmitting,
-        /* and other goodies */
+        setFieldValue,
+        resetForm
       }) => (
         <Container>
         <h1>Contact Us</h1>
-            <Form>
+            <Form onSubmit={handleSubmit}>
 
             <Row>
                 <Col xs="6">
@@ -44,7 +56,7 @@ const form = (props) => {
                         id="name" 
                         placeholder=""
                         value={values.firstName}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>
 
                 </Col>
@@ -57,7 +69,7 @@ const form = (props) => {
                         id="name" 
                         placeholder=""
                         value={values.lastName}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
@@ -72,7 +84,7 @@ const form = (props) => {
                         id="company" 
                         placeholder=""
                         value={values.company}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>                  
 
                 </Col>
@@ -86,7 +98,7 @@ const form = (props) => {
                         id="phoneNumber" 
                         placeholder="phone"
                         value={values.phoneNumber}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
@@ -101,7 +113,7 @@ const form = (props) => {
                         id="exampleEmail" 
                         placeholder="email"
                         value={values.emailAdress}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>                 
 
                 </Col>
@@ -115,7 +127,7 @@ const form = (props) => {
                         id="url" 
                         placeholder="url"
                         value={values.url}
-                        onchange={handleChange} />
+                        onChange={handleChange} />
                     </FormGroup>
                 </Col>
             </Row>
@@ -128,7 +140,10 @@ const form = (props) => {
                     <Label check>
                         <Input 
                         type="radio" 
-                        name="morning" />{' '}
+                        name="completed"
+                        value="morning"
+                        checked={values.completed === "morning"}
+                        onChange={() => setFieldValue("completed", "morning")} />{' '}
                         Morning
                     </Label>
                 </FormGroup>
@@ -136,7 +151,10 @@ const form = (props) => {
                 <Label check>
                     <Input 
                     type="radio" 
-                    name="evening" />{' '}
+                    name="completed"
+                    value="evening"
+                    checked={values.completed === "evening"}
+                    onChange={() => setFieldValue("completed", "evening")} />{' '}
                     Evening
                 </Label>
                 </FormGroup>
@@ -149,9 +167,15 @@ const form = (props) => {
 
             <Row>
                 <FormGroup check>
+                <h4> Would you like to receive our email newsletter? </h4>
                     <Label check>
-                    <Input type="checkbox" />{' '}
-                    Check me out
+                    <Input 
+                    name="checked"
+                    type="checkbox"
+                    value={values.checked}
+                    onChange={handleChange}
+                     />{' '}
+                   Sure!
                     </Label>
                 </FormGroup>
             </Row>
