@@ -11,3 +11,5 @@ Bundan sonra API_HOST degiskenini kendi urliniz ile sonunda / olmadan degistirin
 
 - [https://scotch.io/courses/using-react-router-4](https://scotch.io/courses/using-react-router-4)
 - [https://www.basefactor.com/react-how-to-display-a-loading-indicator-on-fetch-calls](https://www.basefactor.com/react-how-to-display-a-loading-indicator-on-fetch-calls)
+
+# THIS PROJECT WILL BE DEPLOYED SOON!
